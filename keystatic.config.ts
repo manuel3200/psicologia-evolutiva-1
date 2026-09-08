@@ -22,7 +22,7 @@ export default config({
   singletons: {
     recursos: singleton({
       label: 'Recursos y Enlaces Drive',
-      path: 'src/content/recursos/index',
+      path: 'src/data/recursos/index',
       format: { data: 'json' },
       schema: {
         drivePrincipalTitulo: fields.text({
