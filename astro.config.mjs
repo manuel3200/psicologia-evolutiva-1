@@ -10,4 +10,9 @@ export default defineConfig({
     imageService: 'passthrough',
   }),
   integrations: [react(), keystatic()],
+  vite: {
+    optimizeDeps: {
+      exclude: ['@keystatic/astro'],
+    },
+  },
 });
