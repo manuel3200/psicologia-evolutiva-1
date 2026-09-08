@@ -12,7 +12,7 @@ export default config({
         kind: 'local',
       },
   cloud: {
-    project: 'catedra/psicologia-evolutiva-1',
+    project: 'manuel3200/psicologia-evolutiva-1',
   },
   ui: {
     brand: {
