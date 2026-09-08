@@ -1,0 +1,380 @@
+---
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portal docente de Psicología Evolutiva 1. Acceso al analizador de autoevaluaciones e instructivo paso a paso para procesar archivos Excel de Google Forms." />
+  <title>Portal Docente & Analizador de Evaluaciones | Psicología Evolutiva 1</title>
+  <style>
+    .teacher-badge-highlight {
+      background-color: var(--teacher-bg);
+      color: var(--teacher-accent);
+      border: 1px solid var(--teacher-border);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+    .tool-banner {
+      background: linear-gradient(135deg, #78350f 0%, #b45309 100%);
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .tool-banner-info { max-width: 650px; }
+    .tool-banner h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    .tool-banner p {
+      font-size: 1.05rem;
+      color: #fef3c7;
+      line-height: 1.6;
+    }
+    .step-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 1.25rem;
+    }
+    .step-number {
+      width: 44px;
+      height: 44px;
+      background-color: var(--teacher-accent);
+      color: #ffffff;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      box-shadow: 0 4px 8px rgba(217, 119, 6, 0.25);
+    }
+    .step-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .step-content {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .callout {
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius-sm);
+      margin: 1.25rem 0;
+      border-left: 4px solid;
+    }
+    .callout-info {
+      background-color: var(--primary-light);
+      border-color: var(--primary);
+      color: #1e1b4b;
+    }
+    .callout-warning {
+      background-color: var(--teacher-bg);
+      border-color: var(--teacher-accent);
+      color: #78350f;
+    }
+    .excel-table-container {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-strong);
+    }
+    .excel-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      background-color: #ffffff;
+      text-align: left;
+    }
+    .excel-table th {
+      background-color: #15803d;
+      color: #ffffff;
+      padding: 10px 14px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .excel-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      color: var(--text-muted);
+    }
+    .col-tag {
+      display: inline-block;
+      padding: 2px 6px;
+      background-color: #e2e8f0;
+      color: #334155;
+      border-radius: 4px;
+      font-family: monospace;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABECERA -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand">
+        <div class="brand-icon">🌱</div>
+        <div class="brand-info">
+          <span class="brand-title">Psicología Evolutiva 1</span>
+          <span class="brand-sub">Portal Exclusivo para Profesores</span>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="/" class="nav-link">Inicio</a>
+        <a href="/#recursos" class="nav-link">📁 Recursos & Drive</a>
+        <a href="/docentes" class="nav-link nav-link-teacher active">📊 Portal Profesores</a>
+        <a href="/keystatic" class="nav-link nav-link-cms">✏️ Admin Keystatic</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="section">
+    <div class="container">
+
+      <!-- BANNER DIRECTO AL ANALIZADOR -->
+      <div class="tool-banner">
+        <div class="tool-banner-info">
+          <span style="display: inline-block; padding: 4px 12px; background: rgba(255,255,255,0.2); border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.75rem;">
+            Herramienta Docente Exclusiva
+          </span>
+          <h2>Analizador de Autoevaluaciones</h2>
+          <p>
+            Plataforma web para procesar al instante las respuestas de tus estudiantes desde Google Forms (.xlsx). 
+            Genera métricas de aprobación, distribución de calificaciones y porcentaje de aciertos pregunta por pregunta.
+          </p>
+          <div style="margin-top: 1.5rem; display: flex; gap: 12px; flex-wrap: wrap;">
+            <!-- Enlace directo solicitado -->
+            <a href="https://autoevaluacion.juanconnect.online" target="_blank" rel="noopener noreferrer" class="btn" style="background-color: #ffffff; color: #b45309; font-weight: 800; padding: 14px 26px; font-size: 1.05rem;">
+              <span>🚀</span> Abrir Analizador (autoevaluacion.juanconnect.online) ↗
+            </a>
+            <a href="#instructivo-excel" class="btn btn-outline-white">
+              <span>📖</span> Ver Tutorial Paso a Paso
+            </a>
+          </div>
+        </div>
+        <div style="background: rgba(255,255,255,0.12); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25); text-align: center; min-width: 250px;">
+          <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">📊</div>
+          <div style="font-weight: 700; font-size: 1.1rem;">juanconnect.online</div>
+          <div style="font-size: 0.85rem; color: #fef3c7; margin-top: 4px;">100% privado en tu navegador</div>
+        </div>
+      </div>
+
+      <!-- INSTRUCTIVO PASO A PASO -->
+      <div id="instructivo-excel">
+        <div class="section-header">
+          <span class="section-tag">Guía de Uso del Archivo Excel</span>
+          <h2 class="section-title">Cómo Exportar y Cargar el Archivo en la Plataforma</h2>
+          <p class="section-desc">
+            Seguí estos 5 pasos para obtener los resultados y métricas organizadas de tus estudiantes sin errores.
+          </p>
+        </div>
+
+        <!-- PASO 1 -->
+        <div class="step-card">
+          <div class="step-header">
+            <div class="step-number">1</div>
+            <div>
+              <h3 class="step-title">Configuración del Cuestionario en Google Forms</h3>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Requisitos del formulario</span>
+            </div>
+          </div>
+          <div class="step-content">
+            <p>Al crear el formulario de autoevaluación para los alumnos en Google Forms:</p>
+            <ul style="margin: 0.75rem 0 0.75rem 1.5rem; display: flex; flex-direction: column; gap: 6px;">
+              <li>Andá a <strong>Configuración</strong> y activá <strong>"Convertir en cuestionario"</strong>.</li>
+              <li>Asignale puntos a cada pregunta (por ejemplo: 1 punto cada una).</li>
+              <li>Configurá la <strong>Clave de respuestas</strong> indicando cuál es la opción correcta.</li>
+              <li>Asegurate de pedir siempre el <strong>Correo electrónico</strong> y el <strong>Apellido y Nombre</strong> del estudiante.</li>
+              <li>(Opcional) Podés dejar una pregunta abierta final: <em>"Consultas o dudas conceptuales"</em>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PASO 2 -->
+        <div class="step-card">
+          <div class="step-header">
+            <div class="step-number">2</div>
+            <div>
+              <h3 class="step-title">Descargar el Archivo Excel (.xlsx)</h3>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Exportación desde Google Forms</span>
+            </div>
+          </div>
+          <div class="step-content">
+            <p>Cuando los alumnos hayan finalizado de responder:</p>
+            <ol style="margin: 0.75rem 0 0.75rem 1.5rem; display: flex; flex-direction: column; gap: 8px;">
+              <li>Entrá a tu Google Form y hacé clic en la pestaña <strong>"Respuestas"</strong>.</li>
+              <li>Hacé clic en el ícono verde de <strong>"Vincular con Hojas de cálculo"</strong> (o "Ver en Hojas de cálculo").</li>
+              <li>En la hoja de cálculo de Google que se abre, andá a <strong>Archivo → Descargar → Microsoft Excel (.xlsx)</strong>.</li>
+              <li>Guardá el archivo en tu computadora.</li>
+            </ol>
+            <div class="callout callout-info">
+              💡 <strong>Extensión válida:</strong> La herramienta acepta archivos <code>.xlsx</code> o <code>.xls</code> tal como los exporta Google Forms.
+            </div>
+          </div>
+        </div>
+
+        <!-- PASO 3 -->
+        <div class="step-card">
+          <div class="step-header">
+            <div class="step-number">3</div>
+            <div>
+              <h3 class="step-title">Estructura de Columnas Requerida</h3>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Orden y formato de la primera fila</span>
+            </div>
+          </div>
+          <div class="step-content">
+            <p>
+              Google Forms genera automáticamente la estructura adecuada. Asegurate de que la fila 1 mantenga este formato:
+            </p>
+
+            <div class="excel-table-container">
+              <table class="excel-table">
+                <thead>
+                  <tr>
+                    <th>Columna A</th>
+                    <th>Columna B</th>
+                    <th>Columna C</th>
+                    <th>Columna D</th>
+                    <th>Columnas E en adelante</th>
+                    <th>Última Columna (Opcional)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="col-tag">Marca temporal</span></td>
+                    <td><span class="col-tag">Dirección de correo</span></td>
+                    <td><span class="col-tag">Puntuación</span></td>
+                    <td><span class="col-tag">Apellido y Nombre</span></td>
+                    <td><span class="col-tag">Texto de cada pregunta</span></td>
+                    <td><span class="col-tag">Consultas / Dudas</span></td>
+                  </tr>
+                  <tr>
+                    <td>Fecha y hora automática de envío</td>
+                    <td>Correo del estudiante</td>
+                    <td>Puntos obtenidos (ej: <code>12 / 15</code> o número)</td>
+                    <td>Nombre completo del alumno</td>
+                    <td>Una columna por cada consigna evaluada</td>
+                    <td>Observaciones o comentarios libres</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout callout-warning">
+              ⚠️ <strong>Importante:</strong> No modifiques ni renombres los encabezados de la fila 1 en el Excel. El sistema los detecta automáticamente por nombre.
+            </div>
+          </div>
+        </div>
+
+        <!-- PASO 4 -->
+        <div class="step-card">
+          <div class="step-header">
+            <div class="step-number">4</div>
+            <div>
+              <h3 class="step-title">Subir el Archivo al Analizador</h3>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Procesamiento automático</span>
+            </div>
+          </div>
+          <div class="step-content">
+            <ol style="margin: 0.75rem 0 0.75rem 1.5rem; display: flex; flex-direction: column; gap: 8px;">
+              <li>Ingresá a <a href="https://autoevaluacion.juanconnect.online" target="_blank" rel="noopener"><strong>https://autoevaluacion.juanconnect.online</strong></a>.</li>
+              <li>Arrastrá y soltá tu archivo <code>.xlsx</code> en la caja punteada, o hacé clic en <em>"Seleccionar archivo .xlsx"</em>.</li>
+              <li>En menos de un segundo se procesarán los datos y se abrirá el panel interactivo.</li>
+            </ol>
+            <div class="callout callout-info">
+              🔒 <strong>Privacidad y seguridad:</strong> Todo el procesamiento del Excel se realiza en el navegador web local. Las notas y nombres de los estudiantes <strong>no se guardan en ningún servidor externo</strong>.
+            </div>
+          </div>
+        </div>
+
+        <!-- PASO 5 -->
+        <div class="step-card">
+          <div class="step-header">
+            <div class="step-number">5</div>
+            <div>
+              <h3 class="step-title">Lectura y Análisis Pedagógico de los Resultados</h3>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Uso de las métricas en la cátedra</span>
+            </div>
+          </div>
+          <div class="step-content">
+            <p>La plataforma te devolverá de forma automática:</p>
+            <ul style="margin: 0.75rem 0 0.75rem 1.5rem; display: flex; flex-direction: column; gap: 10px;">
+              <li><strong>KPIs Globales:</strong> Promedio general del grupo, cantidad total de respuestas recibidas y porcentaje global de aprobación.</li>
+              <li><strong>Gráfico "Aciertos por Pregunta":</strong> Permite ubicar qué preguntas tuvieron bajo porcentaje de acierto para reforzar ese contenido teórico en la clase siguiente.</li>
+              <li><strong>Detalle de Errores por Pregunta:</strong> Al tocar cada pregunta, podés ver qué opciones incorrectas eligieron los alumnos y detectar confusiones conceptuales frecuentes.</li>
+              <li><strong>Tabla de Estudiantes Filtrable:</strong> Clasificación rápida por rendimiento: <em>Alto (≥12)</em>, <em>Medio (9–11)</em> y <em>Bajo (≤8)</em> para coordinar tutorías de apoyo.</li>
+            </ul>
+
+            <div style="margin-top: 2rem; text-align: center;">
+              <a href="https://autoevaluacion.juanconnect.online" target="_blank" rel="noopener noreferrer" class="btn btn-teacher" style="padding: 14px 28px; font-size: 1.05rem;">
+                Ir al Analizador de Autoevaluaciones Ahora ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div style="font-weight: 700; color: #ffffff; font-size: 1.1rem; margin-bottom: 4px;">Cátedra de Psicología Evolutiva 1</div>
+          <p style="font-size: 0.88rem; color: #94a3b8; max-width: 460px;">
+            Espacio de apoyo docente e integración pedagógica.
+          </p>
+        </div>
+        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+          <a href="/" style="color: #cbd5e1; font-size: 0.9rem;">Inicio</a>
+          <a href="/#recursos" style="color: #cbd5e1; font-size: 0.9rem;">Drive</a>
+          <a href="https://autoevaluacion.juanconnect.online" target="_blank" style="color: #cbd5e1; font-size: 0.9rem;">Analizador ↗</a>
+          <a href="/keystatic" style="color: #cbd5e1; font-size: 0.9rem;">Admin Keystatic</a>
+        </div>
+      </div>
+      <div class="footer-copy">
+        © 2026 Cátedra de Psicología Evolutiva 1. Jamstack 100% gratuito.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

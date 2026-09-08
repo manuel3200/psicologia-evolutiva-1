@@ -1,0 +1,18 @@
+{
+  "drivePrincipalTitulo": "Drive Oficial de Psicología Evolutiva 1",
+  "drivePrincipalMensaje": "Este es el Drive donde se encuentran los recursos para la materia.",
+  "drivePrincipalDescripcion": "Accedé a toda la carpeta compartida en la nube con textos obligatorios, programas de cátedra, diapositivas y guías de estudio organizadas por la cátedra.",
+  "drivePrincipalUrl": "https://drive.google.com",
+  "enlacesAdicionales": [
+    {
+      "titulo": "Carpeta de Trabajos Prácticos y Guías 2026",
+      "url": "https://drive.google.com",
+      "descripcion": "Consignas de trabajos prácticos, pautas de entrega y viñetas de observación de bebés."
+    },
+    {
+      "titulo": "Bibliografía Digitalizada (Textos por Autor)",
+      "url": "https://drive.google.com",
+      "descripcion": "Capítulos digitalizados de Piaget, Vygotsky, Freud, Erikson y Bowlby."
+    }
+  ]
+}
