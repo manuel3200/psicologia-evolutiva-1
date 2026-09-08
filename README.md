@@ -27,7 +27,7 @@ psicologia-evolutiva-astro/
 ├── keystatic.config.ts         # Esquema de Keystatic (Drive Principal + Enlaces)
 ├── package.json                # Dependencias (Astro, Keystatic, React)
 ├── src/
-│   ├── content/
+│   ├── data/
 │   │   └── recursos/
 │   │       └── index.json      # Archivo de datos sincronizado con Git
 │   ├── pages/
@@ -50,7 +50,7 @@ psicologia-evolutiva-astro/
    - **Web de Estudiantes:** `http://localhost:4321/`
    - **Panel Administrativo (Keystatic):** `http://localhost:4321/keystatic`
 
-En modo local, cualquier cambio que hagas en `/keystatic` modificará directamente el archivo `src/content/recursos/index.json` en tu disco duro y actualizará la web al instante.
+En modo local, cualquier cambio que hagas en `/keystatic` modificará directamente el archivo `src/data/recursos/index.json` en tu disco duro y actualizará la web al instante.
 
 ---
 
