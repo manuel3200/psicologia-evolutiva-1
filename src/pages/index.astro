@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import NetworkBar from '../components/NetworkBar.astro';
 import sitioData from '../data/sitio/index.json';
 import heroData from '../data/hero/index.json';
 import recursosData from '../data/recursos/index.json';
@@ -10,6 +11,9 @@ const cicloLectivo = sitioData.cicloLectivo || "Ciclo Lectivo 2026";
 const carrera = sitioData.carrera || "Carrera de Psicología / Psicopedagogía";
 const footerDescripcion = sitioData.footerDescripcion || "Arquitectura Jamstack (Astro + Keystatic Headless CMS) desplegada en Cloudflare.";
 const footerCopy = sitioData.footerCopy || "© 2026 Cátedra de Psicología Evolutiva 1. Jamstack 100% gratuito.";
+const portalMadreTexto = sitioData.portalMadreTexto || "🏛️ Portal Carrera (PSP)";
+const portalMadreUrl = sitioData.portalMadreUrl || "https://psp.joif.net";
+const materiasHermanas = sitioData.materiasHermanas || [{ nombre: "Antropología", url: "https://antro.joif.net" }];
 
 const heroTitulo = heroData.titulo || "Cátedra de Psicología Evolutiva 1";
 const heroDescripcion = heroData.descripcion || "Estudio comprensivo de las transformaciones psicológicas del ser humano a lo largo del ciclo vital: desde la vida prenatal, la primera infancia y la niñez, articulando las dimensiones cognitivas, afectivas y socio-culturales.";
@@ -33,6 +37,14 @@ const enlaces = recursosData.enlacesAdicionales || [];
   <title>{nombreMateria} | Portal Académico</title>
 </head>
 <body>
+
+  <!-- BARRA DE RED INSTITUCIONAL (HUB & CÁTEDRAS HERMANAS) -->
+  <NetworkBar
+    currentMateria={nombreMateria}
+    portalMadreTexto={portalMadreTexto}
+    portalMadreUrl={portalMadreUrl}
+    materiasHermanas={materiasHermanas}
+  />
 
   <!-- CABECERA -->
   <header class="site-header">

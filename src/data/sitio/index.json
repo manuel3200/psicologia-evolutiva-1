@@ -4,5 +4,13 @@
   "cicloLectivo": "Ciclo Lectivo 2026",
   "carrera": "Carrera de Psicopedagogía",
   "footerDescripcion": "Arquitectura Jamstack (Astro + Keystatic Headless CMS) desplegada en Cloudflare.",
-  "footerCopy": "© 2026 Cátedra de Psicología Evolutiva 1. Jamstack 100% gratuito."
+  "footerCopy": "© 2026 Cátedra de Psicología Evolutiva 1. Jamstack 100% gratuito.",
+  "portalMadreTexto": "🏛️ Portal Carrera (PSP)",
+  "portalMadreUrl": "https://psp.joif.net",
+  "materiasHermanas": [
+    {
+      "nombre": "Antropología",
+      "url": "https://antro.joif.net"
+    }
+  ]
 }

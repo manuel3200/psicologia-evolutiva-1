@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import NetworkBar from '../components/NetworkBar.astro';
 import sitioData from '../data/sitio/index.json';
 import docentesData from '../data/docentes/index.json';
 
@@ -7,6 +8,9 @@ const nombreMateria = sitioData.nombreMateria || "Psicología Evolutiva 1";
 const subtituloSitio = sitioData.subtitulo || "Portal Exclusivo para Profesores";
 const footerDescripcion = sitioData.footerDescripcion || "Espacio de apoyo docente e integración pedagógica.";
 const footerCopy = sitioData.footerCopy || "© 2026 Cátedra de Psicología Evolutiva 1. Jamstack 100% gratuito.";
+const portalMadreTexto = sitioData.portalMadreTexto || "🏛️ Portal Carrera (PSP)";
+const portalMadreUrl = sitioData.portalMadreUrl || "https://psp.joif.net";
+const materiasHermanas = sitioData.materiasHermanas || [{ nombre: "Antropología", url: "https://antro.joif.net" }];
 
 const bannerBadge = docentesData.badge || "Herramienta Docente Integrada";
 const bannerTitulo = docentesData.titulo || "Analizador de Autoevaluaciones";
@@ -153,6 +157,14 @@ const botonAnalizadorTexto = docentesData.botonAnalizadorTexto || "Abrir Analiza
   </style>
 </head>
 <body>
+
+  <!-- BARRA DE RED INSTITUCIONAL (HUB & CÁTEDRAS HERMANAS) -->
+  <NetworkBar
+    currentMateria={nombreMateria}
+    portalMadreTexto={portalMadreTexto}
+    portalMadreUrl={portalMadreUrl}
+    materiasHermanas={materiasHermanas}
+  />
 
   <!-- CABECERA -->
   <header class="site-header">

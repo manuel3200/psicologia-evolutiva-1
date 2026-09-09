@@ -1,0 +1,38 @@
+---
+interface Props {
+  currentMateria?: string;
+  portalMadreTexto?: string;
+  portalMadreUrl?: string;
+  materiasHermanas?: Array<{ nombre: string; url: string }>;
+}
+
+const {
+  currentMateria = "Psicología Evolutiva 1",
+  portalMadreTexto = "🏛️ Portal Carrera (PSP)",
+  portalMadreUrl = "https://psp.joif.net",
+  materiasHermanas = [{ nombre: "Antropología", url: "https://antro.joif.net" }]
+} = Astro.props;
+---
+
+<div class="network-bar">
+  <div class="container network-inner">
+    <!-- BOTÓN PORTAL MADRE -->
+    <a href={portalMadreUrl} class="network-parent" title="Ir al Portal Central de la Carrera">
+      <span>{portalMadreTexto}</span>
+      <span style="font-size: 0.75rem; opacity: 0.7;">↗</span>
+    </a>
+
+    <!-- RED DE CÁTEDRAS DE LA CARRERA -->
+    <div class="network-sisters">
+      <span class="network-label">Cátedras:</span>
+      <span class="network-chip current">
+        <span>📍</span> {currentMateria}
+      </span>
+      {materiasHermanas && materiasHermanas.map((hermana) => (
+        <a href={hermana.url} class="network-chip sister" title={`Ir a la Cátedra de ${hermana.nombre}`}>
+          <span>↗</span> {hermana.nombre}
+        </a>
+      ))}
+    </div>
+  </div>
+</div>

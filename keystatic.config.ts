@@ -50,6 +50,24 @@ export default config({
           label: 'Texto de Copyright',
           defaultValue: '© 2026 Cátedra de Psicología Evolutiva 1. Jamstack 100% gratuito.',
         }),
+        portalMadreTexto: fields.text({
+          label: 'Texto Botón Portal Madre',
+          defaultValue: '🏛️ Portal Carrera (PSP)',
+        }),
+        portalMadreUrl: fields.url({
+          label: 'Enlace / URL Portal Madre',
+          defaultValue: 'https://psp.joif.net',
+        }),
+        materiasHermanas: fields.array(
+          fields.object({
+            nombre: fields.text({ label: 'Nombre de la Materia' }),
+            url: fields.url({ label: 'Enlace / URL del Sitio' }),
+          }),
+          {
+            label: 'Cátedras Hermanas (Red de la Carrera)',
+            itemLabel: props => props.fields.nombre.value || 'Nueva Cátedra Hermana',
+          }
+        ),
       },
     }),
 
