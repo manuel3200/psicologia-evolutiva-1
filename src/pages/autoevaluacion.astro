@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Analizador de Autoevaluaciones</title>
+<title>Analizador de Autoevaluaciones <a href="/docentes" style="text-decoration:none; color:var(--text-2); font-size:12px; font-weight: 500; margin-left:14px; padding: 4px 10px; border-radius: 6px; background: var(--surface-alt); border: 1px solid var(--border);">← Volver a Cátedra</a></title>
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style is:inline>
@@ -132,7 +132,7 @@
   .format-note h4 { font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-2); }
   .format-note ul { list-style: none; display: flex; flex-direction: column; gap: 3px; }
   .format-note li { font-size: 12px; color: var(--text-3); display: flex; align-items: baseline; gap: 6px; }
-  .format-note li::before { content: "Â·"; color: var(--accent); font-size: 16px; }
+  .format-note li::before { content: "·"; color: var(--accent); font-size: 16px; }
 
   /* DASHBOARD */
   #dashboard { display: none; padding: 2rem; max-width: 1100px; margin: 0 auto; }
@@ -298,8 +298,9 @@
 
 <header class="app-header">
   <div class="app-logo">
-    <span>ðŸ“Š</span>
+    <span>📊</span>
     Analizador de Autoevaluaciones
+    <a href="/docentes" style="text-decoration:none; color:var(--text-2); font-size:12px; font-weight: 500; margin-left:14px; padding: 4px 10px; border-radius: 6px; background: var(--surface-alt); border: 1px solid var(--border);">← Volver a Cátedra</a>
   </div>
   <button class="upload-btn-header" onclick="document.getElementById('fileInput').click()">
     <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a1 1 0 00-.707.293l-4 4a1 1 0 101.414 1.414L9 5.414V13a1 1 0 102 0V5.414l2.293 2.293a1 1 0 001.414-1.414l-4-4A1 1 0 0010 2z"/><path d="M3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/></svg>
@@ -320,8 +321,8 @@
         <path d="M9 17v-6m0 0l-2 2m2-2l2 2M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M16 7l-4-4-4 4M12 3v10"/>
       </svg>
     </div>
-    <h2>SubÃ­ tu archivo de respuestas</h2>
-    <p>ArrastrÃ¡ y soltÃ¡ el archivo Excel exportado de Google Forms, o hacÃ© clic para seleccionarlo.</p>
+    <h2>Subí tu archivo de respuestas</h2>
+    <p>Arrastrá y soltá el archivo Excel exportado de Google Forms, o hacé clic para seleccionarlo.</p>
     <button class="upload-main-btn" onclick="document.getElementById('fileInput').click()">
       <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm3 2h6v4H7V5zm-1 6h8v2H6v-2z"/></svg>
       Seleccionar archivo .xlsx
@@ -333,8 +334,8 @@
     <h4>Columnas esperadas en el archivo</h4>
     <ul>
       <li>Marca temporal (fecha/hora de respuesta)</li>
-      <li>DirecciÃ³n de correo electrÃ³nico</li>
-      <li>PuntuaciÃ³n (nÃºmero)</li>
+      <li>Dirección de correo electrónico</li>
+      <li>Puntuación (número)</li>
       <li>Apellido y Nombre</li>
       <li>Una columna por cada pregunta (con el texto de la pregunta como encabezado)</li>
       <li>Columna opcional de consultas/observaciones al final</li>
@@ -346,7 +347,7 @@
 <div id="dashboard">
   <div class="dash-top">
     <div class="dash-title">
-      <h1 id="dashTitle">Resultados de AutoevaluaciÃ³n</h1>
+      <h1 id="dashTitle">Resultados de Autoevaluación</h1>
       <p id="dashSubtitle"></p>
     </div>
     <div class="dash-meta" id="dashMeta"></div>
@@ -358,7 +359,7 @@
   <!-- Charts row -->
   <div class="grid-2">
     <div class="card">
-      <div class="card-title">DistribuciÃ³n de puntajes</div>
+      <div class="card-title">Distribución de puntajes</div>
       <div class="chart-wrap" style="height:240px"><canvas id="cDist"></canvas></div>
     </div>
     <div class="card">
@@ -382,14 +383,14 @@
     <div class="card-title">Estudiantes</div>
     <div class="filter-row">
       <button class="filter-btn active" onclick="filterStudents('all',this)">Todos</button>
-      <button class="filter-btn" onclick="filterStudents('high',this)">Alto â‰¥12</button>
-      <button class="filter-btn" onclick="filterStudents('mid',this)">Medio 9â€“11</button>
-      <button class="filter-btn" onclick="filterStudents('low',this)">Bajo â‰¤8</button>
+      <button class="filter-btn" onclick="filterStudents('high',this)">Alto ≥12</button>
+      <button class="filter-btn" onclick="filterStudents('mid',this)">Medio 9–11</button>
+      <button class="filter-btn" onclick="filterStudents('low',this)">Bajo ≤8</button>
       <input class="search-box" id="searchBox" type="text" placeholder="Buscar estudiante..." oninput="filterStudents('search',null)">
     </div>
     <div class="table-scroll">
       <table class="student-table" id="studentTable">
-        <thead><tr><th>#</th><th>Nombre</th><th>Puntaje</th><th>CalificaciÃ³n</th></tr></thead>
+        <thead><tr><th>#</th><th>Nombre</th><th>Puntaje</th><th>Calificación</th></tr></thead>
         <tbody id="studentTbody"></tbody>
       </table>
     </div>
@@ -438,7 +439,7 @@ function processFile(file) {
         const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
         parseData(data, file.name);
       } catch(err) {
-        alert('Error al procesar el archivo. VerificÃ¡ que sea un Excel vÃ¡lido.');
+        alert('Error al procesar el archivo. Verificá que sea un Excel válido.');
         console.error(err);
       }
       document.getElementById('loadingScreen').style.display = 'none';
@@ -457,7 +458,7 @@ function parseData(data, filename) {
   const iTime = headers.findIndex(h => /temporal|timestamp|fecha|hora|time/i.test(h));
   const iObs = headers.findIndex(h => /inquietud|consulta|observaci|comment|nota/i.test(h));
 
-  // Detectar columnas de preguntas (despuÃ©s de nombre, hasta observaciones)
+  // Detectar columnas de preguntas (después de nombre, hasta observaciones)
   const qStart = Math.max(iScore, iName, iTime) + 1;
   const qEnd = iObs > -1 ? iObs : headers.length;
   const qCols = [];
@@ -466,12 +467,12 @@ function parseData(data, filename) {
   }
 
   if (iScore === -1 || iName === -1 || qCols.length === 0) {
-    alert('No se pudieron detectar las columnas necesarias. VerificÃ¡ que el archivo tenga columnas de PuntuaciÃ³n, Nombre y preguntas.');
+    alert('No se pudieron detectar las columnas necesarias. Verificá que el archivo tenga columnas de Puntuación, Nombre y preguntas.');
     document.getElementById('loadingScreen').style.display = 'none';
     return;
   }
 
-  // Determinar puntaje mÃ¡ximo
+  // Determinar puntaje máximo
   const scores = rows.map(r => parseFloat(r[iScore]) || 0).filter(s => s > 0);
   maxScore = qCols.length;
 
@@ -482,7 +483,7 @@ function parseData(data, filename) {
     obs: iObs > -1 ? String(r[iObs] || '').trim() : ''
   })).filter(s => s.name);
 
-  // Calcular respuesta correcta por pregunta (la mÃ¡s frecuente)
+  // Calcular respuesta correcta por pregunta (la más frecuente)
   allQuestions = qCols.map((col, qi) => {
     const qText = headers[col];
     const answers = allStudents.map(s => s.answers[qi]).filter(a => a);
@@ -525,7 +526,7 @@ function renderDashboard(filename, dateStr) {
 
   // Title
   const name = filename.replace(/\.(xlsx|xls)$/i, '').replace(/_/g, ' ');
-  document.getElementById('dashTitle').textContent = name.length > 60 ? 'Resultados de AutoevaluaciÃ³n' : name;
+  document.getElementById('dashTitle').textContent = name.length > 60 ? 'Resultados de Autoevaluación' : name;
   document.getElementById('dashSubtitle').textContent = dateStr ? `Formulario del ${dateStr}` : '';
 
   // Meta badges
@@ -539,9 +540,9 @@ function renderDashboard(filename, dateStr) {
   // KPIs
   document.getElementById('kpiRow').innerHTML = `
     <div class="kpi"><div class="kpi-label">Promedio general</div><div class="kpi-value accent">${avg.toFixed(1)}</div><div class="kpi-sub">sobre ${maxScore} puntos</div></div>
-    <div class="kpi"><div class="kpi-label">Puntaje mÃ¡ximo</div><div class="kpi-value green">${maxS}</div><div class="kpi-sub">${allStudents.filter(s=>s.score===maxS).length} estudiante(s)</div></div>
-    <div class="kpi"><div class="kpi-label">Puntaje mÃ­nimo</div><div class="kpi-value red">${minS}</div><div class="kpi-sub">${allStudents.filter(s=>s.score===minS).length} estudiante(s)</div></div>
-    <div class="kpi"><div class="kpi-label">AprobaciÃ³n â‰¥60%</div><div class="kpi-value">${passPct}%</div><div class="kpi-sub">${passing} de ${n} estudiantes</div></div>
+    <div class="kpi"><div class="kpi-label">Puntaje máximo</div><div class="kpi-value green">${maxS}</div><div class="kpi-sub">${allStudents.filter(s=>s.score===maxS).length} estudiante(s)</div></div>
+    <div class="kpi"><div class="kpi-label">Puntaje mínimo</div><div class="kpi-value red">${minS}</div><div class="kpi-sub">${allStudents.filter(s=>s.score===minS).length} estudiante(s)</div></div>
+    <div class="kpi"><div class="kpi-label">Aprobación ≥60%</div><div class="kpi-value">${passPct}%</div><div class="kpi-sub">${passing} de ${n} estudiantes</div></div>
     <div class="kpi"><div class="kpi-label">Mediana</div><div class="kpi-value">${median(allStudents.map(s=>s.score)).toFixed(1)}</div><div class="kpi-sub">punto central</div></div>
   `;
 
@@ -648,7 +649,7 @@ function renderQuestionDetail() {
         <span class="pct-val" style="color:${barColor}">${q.pct}%</span>
         <span style="font-size:12px;color:var(--text-3)">(${q.correctCount} de ${q.total} estudiantes)</span>
       </div>
-      ${q.wrong.length > 0 ? `<div class="wrong-answers"><h4>Respuestas incorrectas mÃ¡s frecuentes</h4>${wrongHtml}</div>` : ''}
+      ${q.wrong.length > 0 ? `<div class="wrong-answers"><h4>Respuestas incorrectas más frecuentes</h4>${wrongHtml}</div>` : ''}
     `;
     panels.appendChild(panel);
   });
@@ -682,7 +683,7 @@ function renderStudents(filter) {
       <td style="color:var(--text-3);font-size:12px">${i+1}</td>
       <td style="font-weight:500">${s.name}</td>
       <td><strong>${s.score}</strong><span style="color:var(--text-3);font-size:12px"> / ${maxScore}</span></td>
-      <td><span class="score-pill ${pill}">${label} Â· ${pct}%</span></td>
+      <td><span class="score-pill ${pill}">${label} · ${pct}%</span></td>
     </tr>`;
   }).join('');
 }
@@ -703,4 +704,3 @@ function renderObs() {
 </script>
 </body>
 </html>
-
