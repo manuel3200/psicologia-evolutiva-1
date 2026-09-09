@@ -1,5 +1,17 @@
 ---
 import '../styles/global.css';
+import sitioData from '../data/sitio/index.json';
+import docentesData from '../data/docentes/index.json';
+
+const nombreMateria = sitioData.nombreMateria || "Psicología Evolutiva 1";
+const subtituloSitio = sitioData.subtitulo || "Portal Exclusivo para Profesores";
+const footerDescripcion = sitioData.footerDescripcion || "Espacio de apoyo docente e integración pedagógica.";
+const footerCopy = sitioData.footerCopy || "© 2026 Cátedra de Psicología Evolutiva 1. Jamstack 100% gratuito.";
+
+const bannerBadge = docentesData.badge || "Herramienta Docente Integrada";
+const bannerTitulo = docentesData.titulo || "Analizador de Autoevaluaciones";
+const bannerDescripcion = docentesData.descripcion || "Plataforma web integrada para procesar al instante las respuestas de tus estudiantes desde Google Forms (.xlsx). Genera métricas de aprobación, distribución de calificaciones y porcentaje de aciertos pregunta por pregunta.";
+const botonAnalizadorTexto = docentesData.botonAnalizadorTexto || "Abrir Analizador de Autoevaluaciones ↗";
 ---
 
 <!DOCTYPE html>
@@ -148,8 +160,8 @@ import '../styles/global.css';
       <a href="/" class="brand">
         <div class="brand-icon">🌱</div>
         <div class="brand-info">
-          <span class="brand-title">Psicología Evolutiva 1</span>
-          <span class="brand-sub">Portal Exclusivo para Profesores</span>
+          <span class="brand-title">{nombreMateria}</span>
+          <span class="brand-sub">{subtituloSitio}</span>
         </div>
       </a>
 
@@ -171,17 +183,16 @@ import '../styles/global.css';
       <div class="tool-banner">
         <div class="tool-banner-info">
           <span style="display: inline-block; padding: 4px 12px; background: rgba(255,255,255,0.2); border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.75rem;">
-            Herramienta Docente Integrada
+            {bannerBadge}
           </span>
-          <h2>Analizador de Autoevaluaciones</h2>
+          <h2>{bannerTitulo}</h2>
           <p>
-            Plataforma web integrada para procesar al instante las respuestas de tus estudiantes desde Google Forms (.xlsx). 
-            Genera métricas de aprobación, distribución de calificaciones y porcentaje de aciertos pregunta por pregunta.
+            {bannerDescripcion}
           </p>
           <div style="margin-top: 1.5rem; display: flex; gap: 12px; flex-wrap: wrap;">
             <!-- Enlace directo integrado -->
             <a href="/autoevaluacion" class="btn" style="background-color: #ffffff; color: #b45309; font-weight: 800; padding: 14px 26px; font-size: 1.05rem;">
-              <span>🚀</span> Abrir Analizador de Autoevaluaciones ↗
+              <span>🚀</span> {botonAnalizadorTexto}
             </a>
             <a href="#instructivo-excel" class="btn btn-outline-white">
               <span>📖</span> Ver Tutorial Paso a Paso
@@ -359,9 +370,9 @@ import '../styles/global.css';
     <div class="container">
       <div class="footer-inner">
         <div>
-          <div style="font-weight: 700; color: #ffffff; font-size: 1.1rem; margin-bottom: 4px;">Cátedra de Psicología Evolutiva 1</div>
+          <div style="font-weight: 700; color: #ffffff; font-size: 1.1rem; margin-bottom: 4px;">{nombreMateria}</div>
           <p style="font-size: 0.88rem; color: #94a3b8; max-width: 460px;">
-            Espacio de apoyo docente e integración pedagógica.
+            {footerDescripcion}
           </p>
         </div>
         <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
@@ -372,7 +383,7 @@ import '../styles/global.css';
         </div>
       </div>
       <div class="footer-copy">
-        © 2026 Cátedra de Psicología Evolutiva 1. Jamstack 100% gratuito.
+        {footerCopy}
       </div>
     </div>
   </footer>

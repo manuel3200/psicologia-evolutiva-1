@@ -1,0 +1,38 @@
+{
+  "badge": "Herramienta Docente Integrada",
+  "titulo": "Analizador de Autoevaluaciones",
+  "descripcion": "Plataforma web integrada para procesar al instante las respuestas de tus estudiantes desde Google Forms (.xlsx). Genera métricas de aprobación, distribución de calificaciones y porcentaje de aciertos pregunta por pregunta.",
+  "botonAnalizadorTexto": "Abrir Analizador de Autoevaluaciones ↗",
+  "pasos": [
+    {
+      "numero": "1",
+      "titulo": "Configuración del Cuestionario en Google Forms",
+      "subtitulo": "Requisitos del formulario",
+      "contenido": "Al crear el formulario de autoevaluación: andá a Configuración y activá 'Convertir en cuestionario'. Asignale puntos a cada pregunta, configurá la Clave de respuestas indicando la opción correcta y asegurate de pedir siempre Correo electrónico y Apellido y Nombre."
+    },
+    {
+      "numero": "2",
+      "titulo": "Descargar el Archivo Excel (.xlsx)",
+      "subtitulo": "Exportación desde Google Forms",
+      "contenido": "Cuando los alumnos hayan finalizado de responder: entrá a tu Google Form y hacé clic en la pestaña 'Respuestas'. Hacé clic en el ícono verde de 'Vincular con Hojas de cálculo'. En la hoja que se abre, andá a Archivo → Descargar → Microsoft Excel (.xlsx)."
+    },
+    {
+      "numero": "3",
+      "titulo": "Estructura de Columnas Requerida",
+      "subtitulo": "Orden y formato de la primera fila",
+      "contenido": "Google Forms genera automáticamente la estructura adecuada: Columna A (Marca temporal), Columna B (Dirección de correo), Columna C (Puntuación), Columna D (Apellido y Nombre), Columnas E en adelante (Preguntas del formulario). No modifiques los encabezados de la fila 1."
+    },
+    {
+      "numero": "4",
+      "titulo": "Subir el Archivo al Analizador",
+      "subtitulo": "Procesamiento automático",
+      "contenido": "Ingresá a la sección /autoevaluacion en esta misma plataforma. Arrastrá y soltá tu archivo .xlsx en la caja punteada, o hacé clic en 'Seleccionar archivo .xlsx'. En menos de un segundo se procesarán los datos de forma 100% privada en tu navegador."
+    },
+    {
+      "numero": "5",
+      "titulo": "Lectura y Análisis Pedagógico de los Resultados",
+      "subtitulo": "Uso de las métricas en la cátedra",
+      "contenido": "La plataforma te devolverá de forma automática: KPIs globales (promedio, aprobación), gráfico de aciertos por pregunta para reforzar temas en clase, detalle de errores frecuentes y tabla de estudiantes filtrable (Alto, Medio, Bajo)."
+    }
+  ]
+}

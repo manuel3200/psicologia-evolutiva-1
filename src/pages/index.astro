@@ -1,6 +1,21 @@
 ---
 import '../styles/global.css';
+import sitioData from '../data/sitio/index.json';
+import heroData from '../data/hero/index.json';
 import recursosData from '../data/recursos/index.json';
+
+const nombreMateria = sitioData.nombreMateria || "Psicología Evolutiva 1";
+const subtituloSitio = sitioData.subtitulo || "Portal Jamstack con Keystatic CMS";
+const cicloLectivo = sitioData.cicloLectivo || "Ciclo Lectivo 2026";
+const carrera = sitioData.carrera || "Carrera de Psicología / Psicopedagogía";
+const footerDescripcion = sitioData.footerDescripcion || "Arquitectura Jamstack (Astro + Keystatic Headless CMS) desplegada en Cloudflare.";
+const footerCopy = sitioData.footerCopy || "© 2026 Cátedra de Psicología Evolutiva 1. Jamstack 100% gratuito.";
+
+const heroTitulo = heroData.titulo || "Cátedra de Psicología Evolutiva 1";
+const heroDescripcion = heroData.descripcion || "Estudio comprensivo de las transformaciones psicológicas del ser humano a lo largo del ciclo vital: desde la vida prenatal, la primera infancia y la niñez, articulando las dimensiones cognitivas, afectivas y socio-culturales.";
+const heroBotonDrive = heroData.botonDriveTexto || "Ir al Drive de Recursos";
+const heroBotonAnalizador = heroData.botonAnalizadorTexto || "Analizador de Autoevaluaciones";
+const heroBotonDocente = heroData.botonDocenteTexto || "Instructivo Docente";
 
 const driveTitulo = recursosData.drivePrincipalTitulo || "Drive Oficial de Psicología Evolutiva 1";
 const driveMensaje = recursosData.drivePrincipalMensaje || "Este es el Drive donde se encuentran los recursos para la materia.";
@@ -14,8 +29,8 @@ const enlaces = recursosData.enlacesAdicionales || [];
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portal oficial de la Cátedra de Psicología Evolutiva 1. Repositorio en Google Drive y herramientas de autoevaluación." />
-  <title>Psicología Evolutiva 1 | Portal Académico</title>
+  <meta name="description" content={`Portal oficial de la Cátedra de ${nombreMateria}. Repositorio en Google Drive y herramientas de autoevaluación.`} />
+  <title>{nombreMateria} | Portal Académico</title>
 </head>
 <body>
 
@@ -25,8 +40,8 @@ const enlaces = recursosData.enlacesAdicionales || [];
       <a href="/" class="brand">
         <div class="brand-icon">🌱</div>
         <div class="brand-info">
-          <span class="brand-title">Psicología Evolutiva 1</span>
-          <span class="brand-sub">Portal Jamstack con Keystatic CMS</span>
+          <span class="brand-title">{nombreMateria}</span>
+          <span class="brand-sub">{subtituloSitio}</span>
         </div>
       </a>
 
@@ -44,25 +59,23 @@ const enlaces = recursosData.enlacesAdicionales || [];
   <section class="hero">
     <div class="container">
       <div class="hero-badge">
-        <span>🎓 Ciclo Lectivo 2026</span>
+        <span>🎓 {cicloLectivo}</span>
         <span>•</span>
-        <span>Carrera de Psicología / Psicopedagogía</span>
+        <span>{carrera}</span>
       </div>
-      <h1 class="hero-title">Cátedra de Psicología Evolutiva 1</h1>
+      <h1 class="hero-title">{heroTitulo}</h1>
       <p class="hero-lead">
-        Estudio comprensivo de las transformaciones psicológicas del ser humano a lo largo del ciclo vital: 
-        desde la vida prenatal, la primera infancia y la niñez, articulando las dimensiones cognitivas, 
-        afectivas y socio-culturales.
+        {heroDescripcion}
       </p>
       <div style="display: flex; gap: 12px; flex-wrap: wrap;">
         <a href="#recursos" class="btn btn-primary">
-          <span>📂</span> Ir al Drive de Recursos
+          <span>📂</span> {heroBotonDrive}
         </a>
         <a href="/autoevaluacion" class="btn btn-teacher">
-          <span>📊</span> Analizador de Autoevaluaciones
+          <span>📊</span> {heroBotonAnalizador}
         </a>
         <a href="/docentes" class="btn btn-outline-white">
-          <span>📖</span> Instructivo Docente
+          <span>📖</span> {heroBotonDocente}
         </a>
         <a href="/keystatic" class="btn btn-outline-white">
           <span>✏️</span> Keystatic CMS
@@ -159,9 +172,9 @@ const enlaces = recursosData.enlacesAdicionales || [];
     <div class="container">
       <div class="footer-inner">
         <div>
-          <div style="font-weight: 700; color: #ffffff; font-size: 1.1rem; margin-bottom: 4px;">Cátedra de Psicología Evolutiva 1</div>
+          <div style="font-weight: 700; color: #ffffff; font-size: 1.1rem; margin-bottom: 4px;">{nombreMateria}</div>
           <p style="font-size: 0.88rem; color: #94a3b8; max-width: 460px;">
-            Arquitectura Jamstack (Astro + Keystatic Headless CMS) desplegada en Cloudflare Pages.
+            {footerDescripcion}
           </p>
         </div>
         <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
@@ -173,7 +186,7 @@ const enlaces = recursosData.enlacesAdicionales || [];
         </div>
       </div>
       <div class="footer-copy">
-        © 2026 Cátedra de Psicología Evolutiva 1. Jamstack 100% gratuito.
+        {footerCopy}
       </div>
     </div>
   </footer>
