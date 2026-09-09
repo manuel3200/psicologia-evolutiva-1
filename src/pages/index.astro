@@ -33,8 +33,8 @@ const enlaces = recursosData.enlacesAdicionales || [];
       <nav class="main-nav">
         <a href="/" class="nav-link active">Inicio</a>
         <a href="#recursos" class="nav-link">📁 Recursos & Drive</a>
-        <a href="#ejes-tematicos" class="nav-link">📖 Ejes Temáticos</a>
-        <a href="/docentes" class="nav-link nav-link-teacher">📊 Portal Profesores</a>
+        <a href="/autoevaluacion" class="nav-link">📊 Analizador Excel</a>
+        <a href="/docentes" class="nav-link nav-link-teacher">📖 Instructivo Docente</a>
         <a href="/keystatic" class="nav-link nav-link-cms" title="Panel CMS para editar contenidos">✏️ Admin Keystatic</a>
       </nav>
     </div>
@@ -58,11 +58,14 @@ const enlaces = recursosData.enlacesAdicionales || [];
         <a href="#recursos" class="btn btn-primary">
           <span>📂</span> Ir al Drive de Recursos
         </a>
-        <a href="/docentes" class="btn btn-teacher">
-          <span>📊</span> Portal Docente & Analizador Excel
+        <a href="/autoevaluacion" class="btn btn-teacher">
+          <span>📊</span> Analizador de Autoevaluaciones
+        </a>
+        <a href="/docentes" class="btn btn-outline-white">
+          <span>📖</span> Instructivo Docente
         </a>
         <a href="/keystatic" class="btn btn-outline-white">
-          <span>✏️</span> Editar Contenido (Keystatic CMS)
+          <span>✏️</span> Keystatic CMS
         </a>
       </div>
     </div>
@@ -136,8 +139,11 @@ const enlaces = recursosData.enlacesAdicionales || [];
           </p>
         </div>
         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-          <a href="/docentes" class="btn btn-outline-white" style="background: #ffffff; color: #b45309; font-weight: 800;">
-            <span>📊</span> Analizador Excel
+          <a href="/autoevaluacion" class="btn btn-outline-white" style="background: #ffffff; color: #b45309; font-weight: 800;">
+            <span>📊</span> Abrir Analizador
+          </a>
+          <a href="/docentes" class="btn btn-outline-white">
+            <span>📖</span> Tutorial Excel
           </a>
           <a href="/keystatic" class="btn btn-outline-white">
             <span>✏️</span> Abrir Keystatic CMS
@@ -145,53 +151,6 @@ const enlaces = recursosData.enlacesAdicionales || [];
         </div>
       </div>
 
-    </div>
-  </section>
-
-  <!-- EJES TEMÁTICOS -->
-  <section id="ejes-tematicos" class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Estructura Curricular</span>
-        <h2 class="section-title">Ejes Temáticos de la Materia</h2>
-        <p class="section-desc">
-          Articulación teórica y clínica de los principales hitos del desarrollo en la infancia temprana y niñez.
-        </p>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">👶</div>
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--primary); margin-bottom: 0.4rem;">1. Periodo Prenatal y Neonato</h3>
-          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
-            Desarrollo biológico, reflejos arcaicos y el establecimiento del apego temprano (Bowlby y Ainsworth).
-          </p>
-        </div>
-
-        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">🧩</div>
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--primary); margin-bottom: 0.4rem;">2. Estadio Sensoriomotor</h3>
-          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
-            Construcción del objeto permanente, causalidad, espacio y tiempo de 0 a 2 años (Piaget).
-          </p>
-        </div>
-
-        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">🎨</div>
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--primary); margin-bottom: 0.4rem;">3. Función Simbólica y Juego</h3>
-          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
-            Adquisición del lenguaje, juego dramático, dibujo infantil y pensamiento preoperatorio (2 a 6 años).
-          </p>
-        </div>
-
-        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">❤️</div>
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--primary); margin-bottom: 0.4rem;">4. Subjetividad y Socialización</h3>
-          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
-            Etapas psicosexuales (Freud), desarrollo psicosocial (Erikson) y mediación cultural (Vygotsky).
-          </p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -208,6 +167,7 @@ const enlaces = recursosData.enlacesAdicionales || [];
         <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
           <a href="/" style="color: #cbd5e1; font-size: 0.9rem;">Inicio</a>
           <a href="#recursos" style="color: #cbd5e1; font-size: 0.9rem;">Recursos Drive</a>
+          <a href="/autoevaluacion" style="color: #cbd5e1; font-size: 0.9rem;">Analizador</a>
           <a href="/docentes" style="color: #cbd5e1; font-size: 0.9rem;">Portal Docente</a>
           <a href="/keystatic" style="color: #cbd5e1; font-size: 0.9rem;">Admin Keystatic</a>
         </div>
